@@ -59,9 +59,10 @@ const checkUpdate = async (currentVersion) => {
           downloadUrl = zipAsset.browser_download_url;
         }
       }
-      // Fallback to zipball_url (source code zip)
+      // Fallback: raw download from releases/ folder in repo
       if (!downloadUrl) {
-        downloadUrl = latestRelease.zipball_url;
+        const tag = latestRelease.tag_name.replace(/^v/, '');
+        downloadUrl = `https://raw.githubusercontent.com/darkmax159159357/TypeR/main/releases/TypeR-v${tag}.zip`;
       }
       
       return {
