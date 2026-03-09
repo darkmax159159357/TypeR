@@ -1,0 +1,37 @@
+const config = {
+  appTitle: "TypeR",
+  appVersion: "2.9.5",
+  appUrl: "https://github.com/darkmax159159357/TypeR",
+  authorName: "\u{1D400}\u{1D493}\u{1D488}\u{1D482}\u{1D48F}\u{1D490}\u{1D494} \u{1D400}\u{1D473}\u{1D7F9}\u{1D48E}\u{1D48D}\u{1D48B}\u{1D482}\u{1D7F4}",
+  authorUrl: "https://discord.gg/PZhSh9bJ",
+  exportFileName: "TypeR_Export",
+  defaultPrefixColor: "#FFF3B0",
+  checkUpdates: true,
+  themes: {
+    default: 'Default',
+    dashboard: 'Dashboard',
+    sakura: 'Sakura Pink',
+    volt: 'Volt Green',
+    'amethyst-night': 'Amethyst Night',
+    'black-blue': 'Black Blue',
+    'black-pink': 'Black Pink',
+    'neon-pink': 'Neon Pink',
+    obsidian: 'Obsidian',
+    'white-green': 'White Green',
+  },
+  languages: {
+    auto: "Auto",
+    en_US: "English",
+    fr_FR: "Fran\u00e7ais",
+    de_DE: "Deutsch",
+    es_SP: "Espa\u00f1ol",
+    pt_BR: "Portugu\u00eas (Brasil)",
+    ru_RU: "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+    tr_TR: "T\u00fcrk\u00e7e",
+    uk_UA: "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+    vi_VN: "Ti\u1ebfng Vi\u1ec7t",
+    ar_AE: "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+  },
+};
+
+export default config;

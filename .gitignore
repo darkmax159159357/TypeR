@@ -1,0 +1,10 @@
+.vscode
+node_modules
+storage
+TypeR*.zip
+TypeR-*.zxp
+.DS_Store
+docs*
+pyproject.toml
+main.py
+.pythonlibs
