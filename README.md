@@ -43,14 +43,14 @@
 
   ### 🧹 LaMa AI Clean (Offline)
   - **One-click text removal** — Select text area, click Clean — AI removes the text seamlessly
-  - **Fully offline** — After initial model download (~410MB), no internet required
+  - **Fully offline** — After initial model download, no internet required
   - **Local processing** — Your files never leave your computer
-  - **Auto-setup** — Python, PyTorch, and dependencies install automatically on first use
+  - **Zero manual setup** — Everything downloads and configures automatically on first use
 
   ### 🔍 Auto Clean (YOLO + LaMa Pipeline)
   - **Automatic detection** — YOLOv8 finds all text regions in the entire page
   - **Batch cleaning** — Detects and cleans every text bubble in one click
-  - **Smart model download** — Detection model (~52MB) downloads automatically with SHA-256 verification
+  - **Smart model download** — Detection model downloads automatically with SHA-256 verification
   - **Progress tracking** — Real-time progress: "Cleaning region 3/8..."
 
   ### ⌨️ Hotkeys
@@ -64,7 +64,7 @@
   - **Auto-detect** — Matches your Photoshop language setting
 
   ### 🎭 Themes
-  - **10 themes** — Default, Dashboard, Sakura Pink, Volt Green, Amethyst Night, Black Blue, Black Pink, Neon Pink, Obsidian, White Green
+  - **10 built-in themes** — Default, Dashboard, Sakura Pink, Volt Green, Amethyst Night, Black Blue, Black Pink, Neon Pink, Obsidian, White Green
   - **Auto-sync** — Adapts to Photoshop's UI brightness
 
   ### 📝 Markdown Support
@@ -76,7 +76,7 @@
 
   ## 📥 Installation
 
-  ### Method 1: Quick Install (Recommended)
+  ### Quick Install (Recommended)
   1. Download `TypeR-v2.9.5.zip` from the [Releases](https://github.com/darkmax159159357/TypeR/releases/latest) page
   2. Extract the zip file
   3. Copy the extracted folder to your Photoshop extensions directory:
@@ -89,7 +89,7 @@
   4. Restart Photoshop
   5. Open TypeR from **Window → Extensions → TypeR**
 
-  ### Method 2: Install Scripts
+  ### Install Scripts
   - **Windows**: Run `install_win.cmd` as Administrator
   - **macOS**: Run `install_mac.sh` in Terminal
 
@@ -117,8 +117,8 @@
   |---|---|
   | **Photoshop** | CC 2019 – 2025+ (CEP 9+) |
   | **OS** | Windows 10/11, macOS 10.14+ |
-  | **Python** | 3.8+ (auto-detected for AI features) |
-  | **GPU** | Optional — CUDA GPU accelerates AI cleaning |
+
+  > **AI Features (LaMa Clean / Auto Clean):** Everything is fully automatic — models, dependencies, and runtime are all auto-detected and configured on first use. No manual setup needed. A CUDA-compatible GPU is optional but speeds up processing.
 
   ---
 
@@ -141,16 +141,93 @@
 
   ---
 
+  ## 🧠 AI Models & Technical Details
+
+  TypeR uses two AI models for text detection and removal. Both are downloaded automatically on first use.
+
+  ### LaMa — Text Removal (Inpainting)
+
+  | Property | Details |
+  |----------|---------|
+  | **Model** | big-lama.pt (~410 MB) |
+  | **Architecture** | FFCResNetGenerator (Fast Fourier Convolution ResNet) |
+  | **Paper** | [Resolution-robust Large Mask Inpainting with Fourier Convolutions](https://arxiv.org/abs/2109.07161) |
+  | **Input** | 4-channel (RGB image + binary mask) |
+  | **Output** | 3-channel RGB (inpainted result) |
+  | **Device** | CUDA (GPU) or CPU — auto-detected |
+
+  <details>
+  <summary>Network Architecture</summary>
+
+  ```
+  Input (4ch: RGB + Mask)
+      │
+      ├── 3× Downsampling Convolutions (64 → 128 → 256)
+      ├── 18× FFC ResNet Blocks (ratio: 0.75)
+      │       └── Fast Fourier Convolution for global context
+      ├── 3× Upsampling Convolutions (256 → 128 → 64)
+      └── Output (3ch: RGB, sigmoid activation)
+  ```
+
+  </details>
+
+  ### YOLOv8 — Text Detection
+
+  | Property | Details |
+  |----------|---------|
+  | **Model** | public.pt (~52 MB) |
+  | **Architecture** | YOLOv8 (Ultralytics) |
+  | **Classes** | 2: `text_bubble`, `text_free` |
+  | **Input** | Full manga/comic page image |
+  | **Output** | Bounding boxes with class labels and confidence scores |
+  | **Integrity** | SHA-256 verified on download |
+
+  ### Auto Clean Pipeline
+
+  ```
+  Full Page (PNG) → YOLOv8 Detection → For each text region:
+      → Create Selection → Capture + Mask → LaMa Inpaint → Apply as Layer
+  ```
+
+  ### Storage Locations
+
+  | OS | Path |
+  |----|------|
+  | **Windows** | `%LOCALAPPDATA%\TypeR_lama\` |
+  | **macOS** | `~/Library/Application Support/TypeR_lama/` |
+
+  ```
+  TypeR_lama/
+  ├── lama-big/
+  │   ├── big-lama.pt          # LaMa inpainting model
+  │   └── config.yaml          # Model configuration
+  ├── detection/
+  │   └── public.pt            # YOLOv8 detection model
+  └── lama_clean.py            # Inference script
+  ```
+
+  ### Auto-Setup Flow
+
+  ```
+  Click "LaMa Clean" or "Auto Clean"
+      → Auto-detect Python runtime
+      → Auto-install packages (torch, pillow, numpy, ultralytics, opencv)
+      → Auto-download models (big-lama.pt, public.pt)
+      → Run inference — fully automatic, nothing to configure
+  ```
+
+  ---
+
   ## 📋 Changelog
 
   ### v2.9.5
   - Auto Clean: YOLO + LaMa automatic text detection and removal pipeline
-  - Detection model auto-download with SHA-256 integrity verification  
+  - Detection model auto-download with SHA-256 integrity verification
   - LaMa AI Clean: fully offline text removal
   - Improved auto-fit with ellipse-based diamond shaping
   - Ctrl+Z natural undo support in multi-bubble mode
   - Real Bold/Italic font variant resolution (no more synthetic styling)
-  - History panel cleanup — no more "Make Path" / "Delete Path" pollution
+  - History panel cleanup
   - Fixed multi-bubble text alignment and selection indexing
 
   ---
@@ -160,6 +237,13 @@
   Join our Discord server for support, feature requests, and updates:
 
   [![Discord](https://img.shields.io/badge/Join_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/PZhSh9bJ)
+
+  ---
+
+  ## 📚 References
+
+  - **LaMa**: Suvorov et al., *"Resolution-robust Large Mask Inpainting with Fourier Convolutions"*, WACV 2022 — [Paper](https://arxiv.org/abs/2109.07161) | [GitHub](https://github.com/advimman/lama)
+  - **YOLOv8**: Ultralytics — [GitHub](https://github.com/ultralytics/ultralytics) | [Docs](https://docs.ultralytics.com)
 
   ---
 
