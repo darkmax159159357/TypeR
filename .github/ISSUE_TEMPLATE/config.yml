@@ -1,0 +1,9 @@
+blank_issues_enabled: true
+  contact_links:
+    - name: Discord Support
+      url: https://discord.gg/xpjTaFtFjr
+      about: Join our Discord server for quick help and discussion
+    - name: Extraction Bot
+      url: https://discord.gg/2D2XBWFttY
+      about: High-quality manga extraction bot
+  
