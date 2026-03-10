@@ -240,6 +240,14 @@
 
   ---
 
+  ## 🤖 Manga Extraction Bot
+
+  Need high-quality manga raws? Join our extraction bot server:
+
+  [![Extraction Bot](https://img.shields.io/badge/Extraction_Bot-Join_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/tTDvzyDArH)
+
+  ---
+
   ## 📚 References
 
   - **LaMa**: Suvorov et al., *"Resolution-robust Large Mask Inpainting with Fourier Convolutions"*, WACV 2022 — [Paper](https://arxiv.org/abs/2109.07161) | [GitHub](https://github.com/advimman/lama)
