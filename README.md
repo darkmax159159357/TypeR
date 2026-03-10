@@ -8,7 +8,7 @@
 
   [![Release](https://img.shields.io/github/v/release/darkmax159159357/TypeR?style=for-the-badge&color=blue)](https://github.com/darkmax159159357/TypeR/releases/latest)
   [![Downloads](https://img.shields.io/github/downloads/darkmax159159357/TypeR/total?style=for-the-badge&color=green)](https://github.com/darkmax159159357/TypeR/releases)
-  [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/PZhSh9bJ)
+  [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/xpjTaFtFjr)
 
   ---
 
@@ -236,7 +236,7 @@
 
   Join our Discord server for support, feature requests, and updates:
 
-  [![Discord](https://img.shields.io/badge/Join_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/PZhSh9bJ)
+  [![Discord](https://img.shields.io/badge/Join_Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/xpjTaFtFjr)
 
   ---
 
@@ -244,7 +244,7 @@
 
   Need high-quality manga raws? Join our extraction bot server:
 
-  [![Extraction Bot](https://img.shields.io/badge/Extraction_Bot-Join_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/tTDvzyDArH)
+  [![Extraction Bot](https://img.shields.io/badge/Extraction_Bot-Join_Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/2D2XBWFttY)
 
   ---
 
